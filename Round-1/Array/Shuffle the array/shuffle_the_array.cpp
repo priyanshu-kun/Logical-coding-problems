@@ -8,10 +8,10 @@ public:
     vector<int> shuffle(vector<int> &nums, int n)
     {
         vector<int> result;
-        for (uint32_t i = 0, c = n; i < n; ++i, ++c)
+        for (uint32_t i = 0; i < n; ++i)
         {
             result.push_back(nums[i]);
-            result.push_back(nums[c]);
+            result.push_back(nums[n + i]);
         }
         return result;
     }

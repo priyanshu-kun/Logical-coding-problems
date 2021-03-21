@@ -1,10 +1,8 @@
 // Sol - 1 > My approach to suffle the array time complexity is O(n)
 var shuffle = function (nums, n) {
-    let center = nums.length / 2;
-    let initial = 0;
     const result = [];
-    for (let i = initial, c = center; i < center; i++, c++) {
-        result.push(nums[i], nums[c]);
+    for (let i = 0; i < n; i++) {
+        result.push(nums[i], nums[n + i]);
     }
     return result;
 };
