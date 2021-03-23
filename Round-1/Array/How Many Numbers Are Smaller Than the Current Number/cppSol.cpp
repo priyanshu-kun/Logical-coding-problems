@@ -1,27 +1,46 @@
-// Solution - 1 > Brute force approach to solve this question - Time complexity is O(n^2) - Space complexity is O(n)
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
+
+// Solution - 1 > Brute force approach to solve this question - Time complexity is O(n^2) - Space complexity is O(n)
+// class Solution
+// {
+// public:
+//     vector<int> smallerNumbersThanCurrent(vector<int> &nums)
+//     {
+//         vector<int> result;
+//         int count = 0;
+//         for (auto it1 : nums)
+//         {
+//             count = 0;
+//             for (auto it2 : nums)
+//             {
+//                 if (it1 > it2)
+//                 {
+//                     count++;
+//                 }
+//             }
+//             result.push_back(count);
+//         }
+//         return result;
+//     }
+// };
+
+// Solution - 1 > optimise approach to solve this question - Time complexity is O(n) - Space complexity is O(n)
 class Solution
 {
 public:
     vector<int> smallerNumbersThanCurrent(vector<int> &nums)
     {
-        vector<int> result;
-        int count = 0;
-        for (auto it1 : nums)
+        vector<int> v = nums;
+        vector<int> ans;
+        sort(v.begin(), v.end());
+        for (int i = 0; i < nums.size(); i++)
         {
-            count = 0;
-            for (auto it2 : nums)
-            {
-                if (it1 > it2)
-                {
-                    count++;
-                }
-            }
-            result.push_back(count);
+            ans.push_back(lower_bound(v.begin(), v.end(), nums[i]) - v.begin());
         }
-        return result;
+        return ans;
     }
 };
 int main()
