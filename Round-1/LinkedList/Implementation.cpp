@@ -139,6 +139,18 @@ public:
         }
         delete pre;
     }
+
+    void printLinkedListInReverse(Linked_List *head) {
+        if(head == NULL) {
+            return;
+        }
+        printLinkedListInReverse(head->next);
+        cout << head->data << " ";
+
+    }
+    void reverseLinkedList(Linked_List *&head) {
+        Linked_List * temp = head;
+    } 
 };
 
 int main()
@@ -155,14 +167,16 @@ int main()
     head->printBackward(tail);
     auto middle1 = head->findMiddleOfLinkedList(head);
     cout << "Middle: " << middle1->data << endl;
-    head->deleteMiddleElement(head);
+    // head->deleteMiddleElement(head);
     head->printForward(head);
-    head->deleteLinkedList(head);
-    if (head == NULL)
-    {
-        cout << "List is empty!" << endl;
-        return 0;
-    }
-    head->printForward(head);
+    // head->deleteLinkedList(head);
+    // if (head == NULL)
+    // {
+    //     cout << "List is empty!" << endl;
+    //     return 0;
+    // }
+    // head->printForward(head);
+    head->printLinkedListInReverse(head);
+    cout << endl;
     return 0;
 }
