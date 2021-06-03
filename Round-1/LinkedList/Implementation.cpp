@@ -149,7 +149,14 @@ public:
 
     }
     void reverseLinkedList(Linked_List *&head) {
-        Linked_List * temp = head;
+        Linked_List * cur = head,*pre = NULL,*next = head;
+        while(cur) {
+            next = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur=next;
+        }
+        head = pre;
     } 
 };
 
@@ -175,8 +182,9 @@ int main()
     //     cout << "List is empty!" << endl;
     //     return 0;
     // }
-    // head->printForward(head);
     head->printLinkedListInReverse(head);
     cout << endl;
+    head->reverseLinkedList(head);
+    head->printForward(head);
     return 0;
 }
