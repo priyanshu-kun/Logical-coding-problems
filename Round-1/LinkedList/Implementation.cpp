@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <set>
 using namespace std;
 #define ll long long int
 
@@ -158,33 +160,57 @@ public:
         }
         head = pre;
     } 
+    void removeDuplicates(Linked_List *&head) {
+        auto cur = head;
+        while(cur->next) {
+            if(cur->data == cur->next->data) {
+                auto temp = cur->next;
+                cur->next = cur->next->next;
+                delete temp;
+            }
+            else {
+                cur = cur->next;
+            }
+        }
+    }
+
+    void removeDuplicateUnOrderd(Linked_List *&head) {
+        set <int>s;
+        auto cur = head,prv = cur; 
+        while(cur->next) {
+
+        }
+    }
 };
 
 int main()
 {
     Linked_List *head = NULL;
-    ll i = 1;
-    while (i <= 5)
+    ll i = 0;
+    static int arr [] = {1,2,2,2,3,4,5,5};
+    vector <int>vec(arr, arr + sizeof(arr) / sizeof(arr[0]) );
+    while (i < vec.size())
     {
-        head->addNode(i, head);
+        head->addNode(vec[i], head);
         i++;
     }
     head->printForward(head);
-    auto tail = head->getTail(head);
-    head->printBackward(tail);
-    auto middle1 = head->findMiddleOfLinkedList(head);
-    cout << "Middle: " << middle1->data << endl;
+    // auto tail = head->getTail(head);
+    // head->printBackward(tail);
+    // auto middle1 = head->findMiddleOfLinkedList(head);
+    // cout << "Middle: " << middle1->data << endl;
     // head->deleteMiddleElement(head);
-    head->printForward(head);
+    // head->printForward(head);
     // head->deleteLinkedList(head);
     // if (head == NULL)
     // {
     //     cout << "List is empty!" << endl;
     //     return 0;
     // }
-    head->printLinkedListInReverse(head);
-    cout << endl;
-    head->reverseLinkedList(head);
+    // head->printLinkedListInReverse(head);
+    // cout << endl;
+    // head->reverseLinkedList(head);
+    head->removeDuplicates(head);
     head->printForward(head);
     return 0;
 }
